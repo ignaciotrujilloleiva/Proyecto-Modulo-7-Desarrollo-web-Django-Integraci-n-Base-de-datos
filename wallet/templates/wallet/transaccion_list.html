@@ -1,0 +1,24 @@
+{% extends 'wallet/base.html' %}
+
+{% block title %}Transacciones{% endblock %}
+
+{% block content %}
+    <h2>Lista de Transacciones</h2>
+
+    <a href="{% url 'transaccion_create' %}">Crear nueva transacción</a>
+
+    <ul>
+        {% for transaccion in transacciones %}
+            <li>
+                {{ transaccion.usuario.nombre }} -
+                {{ transaccion.moneda.nombre }} -
+                {{ transaccion.tipo_transaccion }} -
+                {{ transaccion.monto }}
+                <a href="{% url 'transaccion_update' transaccion.pk %}">Editar</a>
+                <a href="{% url 'transaccion_delete' transaccion.pk %}">Eliminar</a>
+            </li>
+        {% empty %}
+            <li>No hay transacciones registradas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

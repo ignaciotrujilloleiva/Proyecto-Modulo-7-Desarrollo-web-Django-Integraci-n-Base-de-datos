@@ -1,0 +1,15 @@
+{% extends 'wallet/base.html' %}
+
+{% block title %}Formulario de Transacción{% endblock %}
+
+{% block content %}
+    <h2>Formulario de Transacción</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a href="{% url 'transaccion_list' %}">Volver a la lista</a>
+{% endblock %}

@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Alke Wallet{% endblock %}</title>
 </head>
+
 <body>
     <header>
         <h1>Alke Wallet</h1>
         <nav>
             <a href="{% url 'inicio' %}">Inicio</a> |
             <a href="{% url 'usuario_list' %}">Usuarios</a> |
+            <a href="{% url 'transaccion_list' %}">Transacciones</a> |
             <a href="/admin/">Admin</a>
         </nav>
         <hr>
@@ -21,4 +24,5 @@
         {% endblock %}
     </main>
 </body>
+
 </html>

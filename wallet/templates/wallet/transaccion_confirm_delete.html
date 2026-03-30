@@ -1,0 +1,15 @@
+{% extends 'wallet/base.html' %}
+
+{% block title %}Eliminar Transacción{% endblock %}
+
+{% block content %}
+    <h2>Eliminar Transacción</h2>
+    <p>¿Estás seguro de que deseas eliminar esta transacción?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+    </form>
+
+    <a href="{% url 'transaccion_list' %}">Cancelar</a>
+{% endblock %}
