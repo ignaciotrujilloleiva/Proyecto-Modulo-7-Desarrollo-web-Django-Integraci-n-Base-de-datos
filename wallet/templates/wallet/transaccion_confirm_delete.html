@@ -3,13 +3,38 @@
 {% block title %}Eliminar Transacción{% endblock %}
 
 {% block content %}
-    <h2>Eliminar Transacción</h2>
-    <p>¿Estás seguro de que deseas eliminar esta transacción?</p>
+<div class="transactions-container">
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Sí, eliminar</button>
-    </form>
+    <div class="card card-base form-card shadow-lg p-4 text-center">
 
-    <a href="{% url 'transaccion_list' %}">Cancelar</a>
+        <!-- Título -->
+        <h2>Eliminar Transacción</h2>
+
+        <!-- Mensaje -->
+        <p class="delete-message">
+            ¿Estás seguro de que deseas eliminar esta transacción?
+        </p>
+
+        <!-- Formulario -->
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-actions justify-content-center">
+
+                <!-- Botón eliminar -->
+                <button type="submit" class="btn btn-danger">
+                    Sí, eliminar
+                </button>
+
+                <!-- Botón cancelar -->
+                <a href="{% url 'transaccion_list' %}" class="btn btn-secondary">
+                    Cancelar
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>
 {% endblock %}
