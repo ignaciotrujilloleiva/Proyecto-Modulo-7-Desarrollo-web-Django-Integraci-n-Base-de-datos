@@ -25,6 +25,8 @@
                 <div class="transaction-left">
                     <div class="transaction-info">
                         <strong>{{ transaccion.tipo_transaccion }}</strong>
+                    </div>
+                    <div>
                         <span>
                             {{ transaccion.usuario.nombre }} - {{ transaccion.moneda.nombre }}
                         </span>
@@ -36,7 +38,7 @@
 
                 <!-- Información derecha -->
                 <div class="transaction-right">
-                    
+
 
                     <div class="transaction-actions">
                         <a href="{% url 'transaccion_update' transaccion.pk %}" class="btn btn-primary btn-sm">

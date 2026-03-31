@@ -3,13 +3,41 @@
 {% block title %}Eliminar Usuario{% endblock %}
 
 {% block content %}
-    <h2>Eliminar Usuario</h2>
-    <p>¿Estás seguro de que deseas eliminar a "{{ object.nombre }}"?</p>
+<div class="transactions-container">
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Sí, eliminar</button>
-    </form>
+    <!-- Tarjeta reutilizable (mismo estilo que formularios y transacciones) -->
+    <div class="card card-base form-card shadow-lg p-4 text-center">
 
-    <a href="{% url 'usuario_list' %}">Cancelar</a>
+        <!-- Título -->
+        <h2 class="title text-danger">Eliminar Usuario</h2>
+
+        <!-- Mensaje dinámico -->
+        <p class="delete-message">
+            ¿Estás seguro de que deseas eliminar a 
+            <strong>"{{ object.nombre }}"</strong>?
+        </p>
+
+        <!-- Formulario -->
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Botones centrados -->
+            <div class="form-actions justify-content-center">
+
+                <!-- Botón eliminar -->
+                <button type="submit" class="btn btn-danger">
+                    Sí, eliminar
+                </button>
+
+                <!-- Botón cancelar -->
+                <a href="{% url 'usuario_list' %}" class="btn btn-secondary">
+                    Cancelar
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>
 {% endblock %}

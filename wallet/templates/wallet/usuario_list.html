@@ -3,19 +3,58 @@
 {% block title %}Usuarios{% endblock %}
 
 {% block content %}
-    <h2>Lista de Usuarios</h2>
+<div class="transactions-container">
 
-    <a href="{% url 'usuario_create' %}">Crear nuevo usuario</a>
+    <div class="card card-base transactions-card shadow-lg p-4">
 
-    <ul>
-        {% for usuario in usuarios %}
-            <li>
-                {{ usuario.nombre }} - {{ usuario.correo }} - Saldo: {{ usuario.saldo }}
-                <a href="{% url 'usuario_update' usuario.pk %}">Editar</a>
-                <a href="{% url 'usuario_delete' usuario.pk %}">Eliminar</a>
-            </li>
-        {% empty %}
-            <li>No hay usuarios registrados.</li>
-        {% endfor %}
-    </ul>
+        <!-- Título principal -->
+        <h2 class="title">Lista de Usuarios</h2>
+
+        <!-- Botón para crear nuevo usuario -->
+        <div class="actions-top mb-4">
+            <a href="{% url 'usuario_create' %}" class="btn btn-primary btn-md">
+                Nuevo Usuario
+            </a>
+        </div>
+
+        <!-- Lista de usuarios -->
+        <div class="transactions-list">
+            {% for usuario in usuarios %}
+            <div class="transaction-item">
+
+                <!-- Información izquierda -->
+                <div class="transaction-left">
+                    <div class="transaction-info">
+                        <strong>{{ usuario.nombre }}</strong>
+                    </div>
+                    <div>
+                        <span>{{ usuario.correo }}</span>
+                    </div>
+
+                    <div class="transaction-amount">
+                        Saldo: ${{ usuario.saldo }}
+                    </div>
+                </div>
+
+                <!-- Acciones derecha -->
+                <div class="transaction-right">
+                    <div class="transaction-actions">
+                        <a href="{% url 'usuario_update' usuario.pk %}" class="btn btn-primary btn-sm">
+                            Editar
+                        </a>
+                        <a href="{% url 'usuario_delete' usuario.pk %}" class="btn btn-danger btn-sm">
+                            Eliminar
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            {% empty %}
+            <p class="empty">No hay usuarios registrados.</p>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
 {% endblock %}
