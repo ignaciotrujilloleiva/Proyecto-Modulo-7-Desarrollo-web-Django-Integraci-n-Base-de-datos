@@ -13,11 +13,11 @@
 
 </head>
 
-<body class="background-app">
+<body class="background-app d-flex flex-column min-vh-100">
     <header class="header-alkewallet">
         <h1 class="text-center p-4 fw-bold">Alke Wallet</h1>
         <nav>
-            <ul class="nav justify-content-center">
+            <ul class="nav justify-content-center p-4">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
                 </li>
@@ -32,16 +32,16 @@
                 </li>
             </ul>
         </nav>
-        <hr>
+        
     </header>
 
-    <main class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <main class="container flex-grow-1 d-flex align-items-center justify-content-center">
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="text-center py-3 bg-light border-top">
+    <footer class="footer-alkewallet">
         <div class="container">
-            <span class="text-muted">&copy; 2026 Alke Wallet. Todos los derechos reservados.</span>
+            <span>&copy; 2026 Alke Wallet. Todos los derechos reservados.</span>
         </div>
     </footer>
 </body>

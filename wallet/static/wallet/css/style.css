@@ -30,12 +30,21 @@ h2 {
 }
 
 /* =========================================================
-   HEADER Y NAVEGACIÓN
+   HEADER, FOOTER y NAVEGACIÓN
    Estilos del encabezado principal y enlaces del menú.
 ========================================================= */
 
 .header-alkewallet {
     background: linear-gradient(32deg, #0052D4 16%, #43abdf 49%, #2841bd 87%);
+}
+
+.footer-alkewallet {
+    background: linear-gradient(32deg, #0052D4 16%, #43abdf 49%, #2841bd 87%);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid;
+    margin-top: auto;  
 }
 
 .nav-link {
