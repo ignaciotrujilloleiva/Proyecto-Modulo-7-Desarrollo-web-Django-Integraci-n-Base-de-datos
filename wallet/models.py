@@ -2,8 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-from django.db import models
-
 # Creación de los 3 principales modelos (usuario, moneda y transacciones)
 
 class Usuario(models.Model):
