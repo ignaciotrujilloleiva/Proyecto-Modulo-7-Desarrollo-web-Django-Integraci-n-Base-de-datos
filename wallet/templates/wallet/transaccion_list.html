@@ -3,22 +3,57 @@
 {% block title %}Transacciones{% endblock %}
 
 {% block content %}
-    <h2>Lista de Transacciones</h2>
+<div class="transactions-container">
 
-    <a href="{% url 'transaccion_create' %}">Crear nueva transacción</a>
+    <div class="card card-base transactions-card shadow-lg p-4">
 
-    <ul>
-        {% for transaccion in transacciones %}
-            <li>
-                {{ transaccion.usuario.nombre }} -
-                {{ transaccion.moneda.nombre }} -
-                {{ transaccion.tipo_transaccion }} -
-                {{ transaccion.monto }}
-                <a href="{% url 'transaccion_update' transaccion.pk %}">Editar</a>
-                <a href="{% url 'transaccion_delete' transaccion.pk %}">Eliminar</a>
-            </li>
-        {% empty %}
-            <li>No hay transacciones registradas.</li>
-        {% endfor %}
-    </ul>
+        <h2 class="title">Últimos Movimientos</h2>
+
+        <!-- Botón para crear una nueva transacción -->
+        <div class="actions-top mb-4">
+            <a href="{% url 'transaccion_create' %}" class="btn btn-primary btn-md">
+                Nueva Transacción
+            </a>
+        </div>
+
+        <!-- Lista de transacciones -->
+        <div class="transactions-list">
+            {% for transaccion in transacciones %}
+            <div class="transaction-item">
+
+                <!-- Información izquierda -->
+                <div class="transaction-left">
+                    <div class="transaction-info">
+                        <strong>{{ transaccion.tipo_transaccion }}</strong>
+                        <span>
+                            {{ transaccion.usuario.nombre }} - {{ transaccion.moneda.nombre }}
+                        </span>
+                    </div>
+                    <div class="transaction-amount">
+                        ${{ transaccion.monto }} {{ transaccion.moneda.simbolo }}
+                    </div>
+                </div>
+
+                <!-- Información derecha -->
+                <div class="transaction-right">
+                    
+
+                    <div class="transaction-actions">
+                        <a href="{% url 'transaccion_update' transaccion.pk %}" class="btn btn-primary btn-sm">
+                            Editar
+                        </a>
+                        <a href="{% url 'transaccion_delete' transaccion.pk %}" class="btn btn-danger btn-sm">
+                            Eliminar
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            {% empty %}
+            <p class="empty">No hay transacciones registradas.</p>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
 {% endblock %}

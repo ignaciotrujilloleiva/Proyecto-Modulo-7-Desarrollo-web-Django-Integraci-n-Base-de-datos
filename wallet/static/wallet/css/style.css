@@ -1,0 +1,157 @@
+/* =========================================================
+   VARIABLES GLOBALES
+   Aquí definimos colores reutilizables para mantener
+   consistencia visual en todo el proyecto.
+========================================================= */
+
+:root {
+    /* definicion de colores para uso constante */
+    --color-primario: #0052D4;
+    --color-secundario: #43abdf;
+    --color-opcional: #2841bd;
+}
+
+/* =========================================================
+   ESTILOS GENERALES
+   Estilos base para títulos y texto general.
+========================================================= */
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    text-align: center;
+    font-size: 2.2rem;   /* tamaño grande */
+    font-weight: 700;    /* más presencia */
+    margin-bottom: 25px; /* espacio hacia abajo */
+}
+
+/* =========================================================
+   HEADER Y NAVEGACIÓN
+   Estilos del encabezado principal y enlaces del menú.
+========================================================= */
+
+.header-alkewallet {
+    background: linear-gradient(32deg, #0052D4 16%, #43abdf 49%, #2841bd 87%);
+}
+
+.nav-link {
+    color: white;
+    text-align: center;
+    font-weight: 500; /* semi-bold elegante */
+}
+
+/* =========================================================
+   FONDO GENERAL DE LA APP
+   Se aplica al body para mantener la imagen de fondo
+   en todas las páginas del sistema.
+========================================================= */
+
+.background-app {
+    background: url('../img/fondo.jpg') no-repeat center center;
+    background-size: cover;
+    /* La imagen cubre toda la pantalla */
+    background-position: center;
+    /* Centra la imagen */
+    background-attachment: fixed;
+    /* El fondo no se mueve al hacer scroll */
+    height: 100vh;
+    /* Altura de toda la ventana */
+    margin: 0;
+}
+
+/* =========================================================
+   TARJETAS BASE
+   Clase reutilizable para cards de inicio, formularios,
+   transacciones y otras vistas futuras.
+========================================================= */
+
+.card-base {
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================================
+   TARJETA DE TRANSACCIONES
+   Controla ancho general y centrado de la vista
+   de movimientos.
+========================================================= */
+
+.transactions-card {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   LISTA DE TRANSACCIONES
+   Aquí se estiliza cada fila individual de transacción.
+========================================================= */
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+}
+
+.transaction-amount {
+    font-weight: bold;
+    color: black;
+    font-size: 1.1rem;
+}
+
+/* =========================================================
+   COLUMNA IZQUIERDA DE LA TRANSACCIÓN
+   Contiene tipo de transacción, usuario y moneda.
+========================================================= */
+
+.transaction-left {
+    flex: 1;
+}
+
+/* =========================================================
+   COLUMNA DERECHA DE LA TRANSACCIÓN
+   Contiene el monto y los botones de acción.
+========================================================= */
+
+.transaction-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+/* =========================================================
+   BOTONES DE ACCIÓN DE CADA TRANSACCIÓN
+   Agrupa los botones Editar y Eliminar a la derecha.
+========================================================= */
+
+.transaction-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* =========================================================
+   BOTONES PERSONALIZADOS
+   Se redefine el estilo Bootstrap para mantener
+   la identidad visual del proyecto.
+========================================================= */
+
+.btn-primary {
+    /* Botón con el mismo degradado que el fondo del body */
+    background: linear-gradient(32deg, #0052D4 16%, #43abdf 49%, #2841bd 87%);
+}
+
+.btn-danger {
+    /* Botón con el mismo degradado que el fondo del body */
+    background: linear-gradient(32deg, #cf0000 16%, #dc949a 49%, #ba2431 87%);
+}
