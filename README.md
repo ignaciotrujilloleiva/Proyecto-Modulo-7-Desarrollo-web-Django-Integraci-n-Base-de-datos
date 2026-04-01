@@ -46,7 +46,9 @@ Este proyecto se centra en la integración entre **modelos, base de datos, vista
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/ignaciotrujilloleiva/Proyecto-Modulo-7-Desarrollo-web-Django-Integraci-n-Base-de-datos.git
+git clone 
+
+https://github.com/ignaciotrujilloleiva/Proyecto-Modulo-7-Desarrollo-web-Django-Integraci-n-Base-de-datos.git
 ```
 
 ---
@@ -127,22 +129,46 @@ python manage.py runserver
 class Usuario(models.Model):
     nombre = models.CharField(max_length=100)
     correo = models.EmailField(unique=True)
-    saldo = models.DecimalField(max_digits=10, decimal_places=2)
+    saldo = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     fecha_registro = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.nombre
 
 
 class Moneda(models.Model):
     nombre = models.CharField(max_length=50)
     simbolo = models.CharField(max_length=10)
 
+    def __str__(self):
+        return f"{self.nombre} ({self.simbolo})"
+
 
 class Transaccion(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    moneda = models.ForeignKey(Moneda, on_delete=models.CASCADE)
-    monto = models.DecimalField(max_digits=10, decimal_places=2)
-    tipo_transaccion = models.CharField(max_length=50)
+    TIPO_TRANSACCION = [
+        ('deposito', 'Depósito'),
+        ('retiro', 'Retiro'),
+        ('transferencia', 'Transferencia'),
+    ]
+
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='transacciones')
+    moneda = models.ForeignKey(Moneda, on_delete=models.CASCADE, related_name='transacciones')
+    monto = models.DecimalField(max_digits=12, decimal_places=2)
+    tipo_transaccion = models.CharField(max_length=20, choices=TIPO_TRANSACCION)
     fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.usuario.nombre} - {self.tipo_transaccion} - {self.monto}"
 ```
+Estos modelos implementan relaciones uno a muchos (1:N) mediante claves foráneas, 
+permitiendo que un usuario tenga múltiples transacciones y que cada transacción 
+esté asociada a una moneda específica.
+
+Además, se incorporan buenas prácticas como:
+
+- uso de `choices` para restringir valores
+- métodos `__str__` para mejorar la legibilidad
+- `related_name` para facilitar consultas inversas en el ORM
 
 ---
 
@@ -179,6 +205,11 @@ Permite separar:
 ├── db.sqlite3
 ├── manage.py
 ├── README.md
+├── requirements.txt
+├── .gitignore
+│
+├── Entregable/
+│   └── Informe-proyecto-Alke-Web-Base.pdf
 │
 ├── alke_wallet/
 │   ├── __init__.py
